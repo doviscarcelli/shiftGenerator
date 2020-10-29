@@ -19,6 +19,20 @@ import java.util.List;
  */
 public class TestFragment extends Fragment {
 
+    private View view;
+    public String nome;
+    private TextView fragmentText;
+
+    private CheckBox checkMar;
+    private CheckBox checkMer;
+    private CheckBox checkGio;
+    private CheckBox checkVen;
+    private CheckBox checkSab;
+    private CheckBox checkDom;
+
+
+
+
     public TestFragment() {
         // Required empty public constructor
     }
@@ -39,6 +53,12 @@ public class TestFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString("nome", (String) fragmentText.getText());
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -48,12 +68,33 @@ public class TestFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         //Tiene traccia del nome inserito all'intero della casella testo in MainActivity
-        String nome = getArguments().getString("nome");
-        View v = inflater.inflate(R.layout.fragment_test, container, false);
-        TextView nomePersona = v.findViewById(R.id.nome_testo);
-        nomePersona.setText(nome);
+        nome = getArguments().getString("nome");
+        view = inflater.inflate(R.layout.fragment_test, container, false);
+        fragmentText = view.findViewById(R.id.nome_testo);
+        fragmentText.setText(nome);
+        //Salva lo stato del frammento
+        if (savedInstanceState != null){
+            String nome = savedInstanceState.getString("nome");
+            fragmentText.setText(nome);
+        }
+        checkMar = view.findViewById(R.id.checkMar);
+        checkMer = view.findViewById(R.id.checkMer);
+        checkGio = view.findViewById(R.id.checkGio);
+        checkVen = view.findViewById(R.id.checkVen);
+        checkSab = view.findViewById(R.id.checkSab);
+        checkDom = view.findViewById(R.id.checkDom);
 
-        return v;
+
+        return view;
+    }
+
+    public void azzera(){
+        this.checkMar.setChecked(false);
+        this.checkMer.setChecked(false);
+        this.checkGio.setChecked(false);
+        this.checkVen.setChecked(false);
+        this.checkSab.setChecked(false);
+        this.checkDom.setChecked(false);
     }
 
     /*
@@ -62,29 +103,22 @@ public class TestFragment extends Fragment {
     public static List<GiorniEnum> mostraGiorni(TestFragment fragment){
         List<GiorniEnum> listaGiorniEnum = new ArrayList<GiorniEnum>();
 
-        CheckBox mar = fragment.getView().findViewById(R.id.checkMar);
-        CheckBox mer = fragment.getView().findViewById(R.id.checkMer);
-        CheckBox gio = fragment.getView().findViewById(R.id.checkGio);
-        CheckBox ven = fragment.getView().findViewById(R.id.checkVen);
-        CheckBox sab = fragment.getView().findViewById(R.id.checkSab);
-        CheckBox dom = fragment.getView().findViewById(R.id.checkDom);
-
-        if (mar.isChecked()) {
+        if (fragment.checkMar.isChecked()) {
             listaGiorniEnum.add(GiorniEnum.MAR);
         }
-        if (mer.isChecked()){
+        if (fragment.checkMer.isChecked()){
             listaGiorniEnum.add(GiorniEnum.MER);
         }
-        if (gio.isChecked()){
+        if (fragment.checkGio.isChecked()){
             listaGiorniEnum.add(GiorniEnum.GIO);
         }
-        if (ven.isChecked()){
+        if (fragment.checkVen.isChecked()){
             listaGiorniEnum.add(GiorniEnum.VEN);
         }
-        if (sab.isChecked()){
+        if (fragment.checkSab.isChecked()){
             listaGiorniEnum.add(GiorniEnum.SAB);
         }
-        if (dom.isChecked()){
+        if (fragment.checkDom.isChecked()){
             listaGiorniEnum.add(GiorniEnum.DOM);
         }
 
