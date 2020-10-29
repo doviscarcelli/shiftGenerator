@@ -1,10 +1,14 @@
 package com.example.testapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -72,6 +76,7 @@ public class TestFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_test, container, false);
         fragmentText = view.findViewById(R.id.nome_testo);
         fragmentText.setText(nome);
+
         //Salva lo stato del frammento
         if (savedInstanceState != null){
             String nome = savedInstanceState.getString("nome");
@@ -83,6 +88,20 @@ public class TestFragment extends Fragment {
         checkVen = view.findViewById(R.id.checkVen);
         checkSab = view.findViewById(R.id.checkSab);
         checkDom = view.findViewById(R.id.checkDom);
+
+
+        //Rimuove il frammento selezionato
+        Button button = (Button) view.findViewById(R.id.rimuovi);
+        button.setOnClickListener(v -> {
+            MainActivity mainActivity = (MainActivity) this.getActivity();
+            LinearLayout linearLayout = mainActivity.findViewById(R.id.linear_layout);
+            FrameLayout frameLayout = mainActivity.findViewById(R.id.frame_layout);
+            linearLayout.removeView(frameLayout);
+            linearLayout.removeView(mainActivity.findViewById(this.getId()));
+            Log.i("Printa", "Printato");
+        });
+
+
 
 
         return view;
