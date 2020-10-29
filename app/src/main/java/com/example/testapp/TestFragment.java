@@ -89,6 +89,7 @@ public class TestFragment extends Fragment {
         checkSab = view.findViewById(R.id.checkSab);
         checkDom = view.findViewById(R.id.checkDom);
 
+        //
 
         //Rimuove il frammento selezionato
         Button button = (Button) view.findViewById(R.id.rimuovi);
