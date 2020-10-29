@@ -62,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Test", "è null");
         }
     }
-
-
-
+    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
