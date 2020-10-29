@@ -1,7 +1,6 @@
 package com.example.testapp;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +58,6 @@ public class TestFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putString("nome", (String) fragmentText.getText());
     }
 
     @Override
@@ -77,19 +75,12 @@ public class TestFragment extends Fragment {
         fragmentText = view.findViewById(R.id.nome_testo);
         fragmentText.setText(nome);
 
-        //Salva lo stato del frammento
-        if (savedInstanceState != null){
-            String nome = savedInstanceState.getString("nome");
-            fragmentText.setText(nome);
-        }
         checkMar = view.findViewById(R.id.checkMar);
         checkMer = view.findViewById(R.id.checkMer);
         checkGio = view.findViewById(R.id.checkGio);
         checkVen = view.findViewById(R.id.checkVen);
         checkSab = view.findViewById(R.id.checkSab);
         checkDom = view.findViewById(R.id.checkDom);
-
-        //
 
         //Rimuove il frammento selezionato
         Button button = (Button) view.findViewById(R.id.rimuovi);
@@ -99,7 +90,11 @@ public class TestFragment extends Fragment {
             FrameLayout frameLayout = mainActivity.findViewById(R.id.frame_layout);
             linearLayout.removeView(frameLayout);
             linearLayout.removeView(mainActivity.findViewById(this.getId()));
-            Log.i("Printa", "Printato");
+            MainActivity.fragmentList.remove(this);
+            //Rende invisibili i giorni se non ci sono frammenti
+            if (MainActivity.fragmentList.isEmpty()){
+                ((MainActivity) this.getActivity()).manageDays(false);
+            }
         });
 
 

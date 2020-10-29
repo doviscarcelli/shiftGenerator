@@ -23,13 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     private View view;
     public static final List<Persona> listaPersone = new ArrayList<Persona>();
-    public List<TestFragment> fragmentList = new ArrayList<TestFragment>();
+    public static List<TestFragment> fragmentList = new ArrayList<TestFragment>();
     public static final Map<TestFragment, String> fragmentMapInput = new HashMap<TestFragment, String>();
 
     public int counter;
     public static final Map<Integer, Integer> ITEM_MAP = new HashMap<Integer, Integer>();
-
-    public TestFragment myFragment;
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -37,39 +35,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState != null){
-            Log.i("Test", "Non è null");
-            myFragment = (TestFragment) getSupportFragmentManager().getFragment(savedInstanceState, "myFragment");
-            addContainer(view);
-            addFragment(myFragment);
-
-
-        }
-        else{
-            Log.i("Test", "è null");
-        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     protected void onRestoreInstanceState(Bundle savedInstanceState){
-        if (savedInstanceState != null){
-            Log.i("Test", "Non è null");
-            myFragment = (TestFragment) getSupportFragmentManager().getFragment(savedInstanceState, "myFragment");
-            addContainer(view);
-            addFragment(myFragment);
-        }
-        else{
-            Log.i("Test", "è null");
-        }
+
     }
     
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("Mariello", "Marietto");
-        myFragment = fragmentList.get(1);
-        getSupportFragmentManager().putFragment(outState, "myFragment", myFragment);
 
+    }
+
+    public void manageDays(Boolean state){
+        TextView textView = findViewById(R.id.textView);
+        TextView textView2 = findViewById(R.id.textView2);
+        TextView textView3 = findViewById(R.id.textView3);
+        TextView textView4 = findViewById(R.id.textView4);
+        TextView textView5 = findViewById(R.id.textView5);
+        TextView textView6 = findViewById(R.id.textView6);
+
+        if (state){
+            textView.setVisibility(View.VISIBLE);
+            textView2.setVisibility(View.VISIBLE);
+            textView3.setVisibility(View.VISIBLE);
+            textView4.setVisibility(View.VISIBLE);
+            textView5.setVisibility(View.VISIBLE);
+            textView6.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            textView.setVisibility(View.INVISIBLE);
+            textView2.setVisibility(View.INVISIBLE);
+            textView3.setVisibility(View.INVISIBLE);
+            textView4.setVisibility(View.INVISIBLE);
+            textView5.setVisibility(View.INVISIBLE);
+            textView6.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void azzeraCheckBox(View v){
@@ -78,12 +81,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addFragment(TestFragment myFragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(ITEM_MAP.get(counter), myFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
     public void addFragment(View v){
         view = v;
@@ -110,29 +107,8 @@ public class MainActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.text_input)).setText("");
 
         //Rendi visibili i tag dei giorni (Trova un altro modo per fare sta cosa dei tag dei giorni)
-        TextView textView = findViewById(R.id.textView);
-        TextView textView2 = findViewById(R.id.textView2);
-        TextView textView3 = findViewById(R.id.textView3);
-        TextView textView4 = findViewById(R.id.textView4);
-        TextView textView5 = findViewById(R.id.textView5);
-        TextView textView6 = findViewById(R.id.textView6);
-        textView.setVisibility(View.VISIBLE);
-        textView2.setVisibility(View.VISIBLE);
-        textView3.setVisibility(View.VISIBLE);
-        textView4.setVisibility(View.VISIBLE);
-        textView5.setVisibility(View.VISIBLE);
-        textView6.setVisibility(View.VISIBLE);
-
-
+        manageDays(true);
     }
-
-    public void removeContainer(View v){
-        FrameLayout container= findViewById(ITEM_MAP.get(counter));
-        LinearLayout linearLayout = findViewById(R.id.linear_layout);
-        linearLayout.removeView(container);
-        this.counter -= 1;
-    }
-
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void addContainer(View v){
