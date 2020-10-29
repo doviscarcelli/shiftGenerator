@@ -127,6 +127,17 @@ public class MainActivity extends AppCompatActivity {
         addFragment(v);
     }
 
+    public void clearCommit(){
+        for (Persona persona : listaPersone){
+            persona.giorniDisponibili.clear();
+        }
+        for (Giorno giorno : Giorno.listaGiorni){
+            giorno.personeAssegnateGiorno.clear();
+        }
+        listaPersone.clear();
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void commit(View v){
 
@@ -162,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
         TextView mostraTurni = findViewById(R.id.mostraTurni);
         mostraTurni.setText(output);
         Giorno.listaGiorni.clear();
+
+
+        clearCommit();
 
     }
 
