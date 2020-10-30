@@ -15,10 +15,11 @@
         android:layout_height="match_parent">
 
         <Button
+
             android:id="@+id/rimuovi"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/black_button"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:backgroundTint="#aa0000"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

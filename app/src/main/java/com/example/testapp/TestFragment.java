@@ -23,7 +23,7 @@ import java.util.List;
 public class TestFragment extends Fragment {
 
     private View view;
-    public String nome;
+    private String nome;
     private TextView fragmentText;
 
     private CheckBox checkMar;
@@ -90,9 +90,9 @@ public class TestFragment extends Fragment {
             FrameLayout frameLayout = mainActivity.findViewById(R.id.frame_layout);
             linearLayout.removeView(frameLayout);
             linearLayout.removeView(mainActivity.findViewById(this.getId()));
-            MainActivity.fragmentList.remove(this);
+            MainActivity.getFragmentList().remove(this);
             //Rende invisibili i giorni se non ci sono frammenti
-            if (MainActivity.fragmentList.isEmpty()){
+            if (MainActivity.getFragmentList().isEmpty()){
                 ((MainActivity) this.getActivity()).manageDays(false);
             }
         });

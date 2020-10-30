@@ -22,12 +22,12 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private View view;
-    public static final List<Persona> listaPersone = new ArrayList<Persona>();
-    public static List<TestFragment> fragmentList = new ArrayList<TestFragment>();
-    public static final Map<TestFragment, String> fragmentMapInput = new HashMap<TestFragment, String>();
+    private static final List<Persona> listaPersone = new ArrayList<Persona>();
+    private static List<TestFragment> fragmentList = new ArrayList<TestFragment>();
+    private static final Map<TestFragment, String> fragmentMapInput = new HashMap<TestFragment, String>();
 
-    public int counter;
-    public static final Map<Integer, Integer> ITEM_MAP = new HashMap<Integer, Integer>();
+    private int counter;
+    private static final Map<Integer, Integer> ITEM_MAP = new HashMap<Integer, Integer>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -178,6 +178,16 @@ public class MainActivity extends AppCompatActivity {
         clearCommit();
 
     }
+
+    //
+    //Getters and Setters
+    //
+
+    public static List<TestFragment> getFragmentList(){
+        return fragmentList;
+    }
+
+    
 
 
 

@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
+
         android:id="@+id/buttonInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:maxLength="10"
         android:id="@+id/text_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
         android:ems="10"
         android:hint="Nome"
         android:inputType="textCapWords"
+        android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,19 +38,20 @@
         android:layout_width="match_parent"
         android:layout_height="601dp"
         android:layout_marginTop="108dp"
+        android:backgroundTint="@color/black"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginRight="72dp"
         android:layout_marginBottom="24dp"
         android:onClick="commit"
@@ -78,73 +80,74 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:visibility="invisible"
-
         android:id="@+id/textView2"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="MER"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <TextView
-        android:visibility="invisible"
-
         android:id="@+id/textView3"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="GIO"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <TextView
-        android:visibility="invisible"
-
         android:id="@+id/textView4"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="VEN"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <TextView
-        android:visibility="invisible"
-
         android:id="@+id/textView5"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="SAB"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <TextView
-        android:visibility="invisible"
-
         android:id="@+id/textView6"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="DOM"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="24dp"
         android:onClick="azzeraCheckBox"
+
         android:text="azzera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -13,7 +13,7 @@ public class Giorno {
 
     public Giorno(GiorniEnum giorno){
         this.nome = giorno;
-        if ((this.nome == GiorniEnum.DOM) || (this.nome == GiorniEnum.DOM)){
+        if ((this.nome == GiorniEnum.SAB) || (this.nome == GiorniEnum.DOM)){
             this.numeroPersone = 5;
         }
     }

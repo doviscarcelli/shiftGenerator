@@ -61,31 +61,6 @@ public class Persona implements Comparable<Persona> {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public static void main(String[] args) {
-
-
-        /*
-        List<GiorniEnum> giorniProvvisori = new ArrayList<>();
-        giorniProvvisori.add(GiorniEnum.MAR);
-        giorniProvvisori.add(GiorniEnum.DOM);
-        Persona domiziano = new Persona("Domiziano", giorniProvvisori);
-        Persona mariello = new Persona("Mariello", giorniProvvisori);
-
-        List<Persona> listaPersoneProvvisoria = new ArrayList<Persona>();
-        listaPersoneProvvisoria.add(domiziano);
-        listaPersoneProvvisoria.add(mariello);
-
-        generaMappingGiorniPersona(listaPersoneProvvisoria);
-        System.out.println(giorniMapPersona.toString());
-
-        assegnaTurni(listaGiorni);
-        for (Giorno giorno : listaGiorni) {
-            System.out.println(giorno.personeAssegnateGiorno);
-
-        }
-         */
-
-
-    }
+    public static void main(String[] args) {}
 }
 
