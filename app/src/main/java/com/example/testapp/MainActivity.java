@@ -21,20 +21,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 public class MainActivity extends AppCompatActivity {
 
-    private View view;
     private static final List<Persona> listaPersone = new ArrayList<Persona>();
     private static List<TestFragment> fragmentList = new ArrayList<TestFragment>();
-    public static Set<String> listaNomi = new HashSet<>();
+    private static Set<String> listaNomi = new HashSet<>();
     private static final Map<TestFragment, String> fragmentMapInput = new HashMap<TestFragment, String>();
-
     private int counter;
     private static final Map<Integer, Integer> ITEM_MAP = new HashMap<Integer, Integer>();
-
     public SharedPreferences sharedPreferences;
-
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -45,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             for (String nome: sharedPreferences.getStringSet("listaNomi", null)){
-                Log.i("NomeAfter", nome);
                 restoreFragment(nome);
             }
         }catch (Exception exception){}
@@ -55,11 +49,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         sharedPreferences.edit().putStringSet("listaNomi", listaNomi).commit();
-
-        for (String nome: sharedPreferences.getStringSet("listaNomi", null)){
-            Log.i("Nome", nome);
-        }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -74,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         TestFragment fragment = TestFragment.newInstance();
         //Inserisci il frammento alla lista dei frammenti
         fragmentList.add(fragment);
-
 
         //Bundle
         Bundle bundle = new Bundle();
@@ -102,8 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void saveCheckBox(){
+        for (TestFragment fragment : fragmentList){
 
-
+        }
+    }
 
     public void azzeraCheckBox(View v){
         for (TestFragment fragment : fragmentList){
@@ -113,12 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void addFragment(View v){
-        view = v;
         TestFragment fragment = TestFragment.newInstance();
         //Inserisci il frammento alla lista dei frammenti
         fragmentList.add(fragment);
-
-
 
         //Bundle
         Bundle bundle = new Bundle();
@@ -171,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
             giorno.personeAssegnateGiorno.clear();
         }
         listaPersone.clear();
-        listaNomi.clear();
     }
 
 
@@ -250,6 +237,12 @@ public class MainActivity extends AppCompatActivity {
     public static List<TestFragment> getFragmentList(){
         return fragmentList;
     }
+
+    public static Set<String> getListaNomi(){
+        return listaNomi;
+    }
+
+
 
 
 

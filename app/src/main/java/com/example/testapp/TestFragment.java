@@ -95,7 +95,7 @@ public class TestFragment extends Fragment {
             if (MainActivity.getFragmentList().isEmpty()){
                 ((MainActivity) this.getActivity()).manageDays(false);
             }
-            MainActivity.listaNomi.remove(this.nome);
+            MainActivity.getListaNomi().remove(this.nome);
         });
 
         return view;
@@ -134,7 +134,6 @@ public class TestFragment extends Fragment {
         if (fragment.checkDom.isChecked()){
             listaGiorniEnum.add(GiorniEnum.DOM);
         }
-
 
         String listaGiorniEnumFormat = "";
         for (int i = 0; i < listaGiorniEnum.size(); i++){
