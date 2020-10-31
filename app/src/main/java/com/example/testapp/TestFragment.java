@@ -95,6 +95,7 @@ public class TestFragment extends Fragment {
             if (MainActivity.getFragmentList().isEmpty()){
                 ((MainActivity) this.getActivity()).manageDays(false);
             }
+            MainActivity.listaNomi.remove(this.nome);
         });
 
         return view;
